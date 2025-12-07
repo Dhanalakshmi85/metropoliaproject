@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weekly Study Plan</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📅 Weekly Study Plan</h1>
+
+    <table>
+        <tr><th>Day</th><th>Python</th><th>Finnish</th></tr>
+        {% for day in week %}
+        <tr>
+            <td>{{day.name}}</td>
+            <td>{{day.python}} hrs</td>
+            <td>{{day.finnish}} hrs</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>📝 AI Priority Suggestion</h2>
+
+    <div class="task-container">
+        {% for item in plan %}
+        <div class="task-card
+             {% if 'URGENT' in item.priority %} urgent
+             {% elif 'High' in item.priority %} high
+             {% else %} normal {% endif %}">
+             
+            <p><b>{{item.task}}</b></p>
+            <p>Deadline: {{item.deadline}}</p>
+            <p>Status: <span>{{item.priority}}</span></p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a class="back-btn" href="/">⬅ Back</a>
+
+</div>
+
+</body>
+</html>

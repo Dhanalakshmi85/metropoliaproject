@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Metropolia AI Study Planner</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📘 Metropolia AI Study Planner</h1>
+
+    <!-- ADD TASK -->
+    <div class="section-box">
+        <h2>➕ Add New Task</h2>
+        <form method="POST">
+            <input type="text" name="task" placeholder="Task Name" required>
+            <input type="date" name="deadline" required>
+            <input type="number" name="hours" min="1" placeholder="Total Hours" required>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+    <!-- WEEK PLAN -->
+    <div class="section-box">
+        <h2>🧠 Generate Weekly Plan</h2>
+        <form action="/plan" method="POST">
+            <input type="number" name="python" placeholder="Python hours/day" required>
+            <input type="number" name="finnish" placeholder="Finnish hours/day" required>
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+
+    {% if reminders %}
+    <div class="alert">
+        <h3>⚠ Urgent Tasks (AI Reminder)</h3>
+        <ul>
+        {% for r in reminders %}
+            <li><b>{{r.task}}</b> — {{r.deadline}} ⏳</li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- EXISTING TASKS -->
+    <div class="section-box">
+        <h2>📋 Upcoming Tasks</h2>
+
+        {% if tasks %}
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Deadline</th>
+                <th>Hours Needed</th>
+            </tr>
+            {% for t in tasks %}
+            <tr>
+                <td>{{t.task}}</td>
+                <td>{{t.deadline}}</td>
+                <td>{{t.hours_needed}} hrs</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No tasks yet.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+[
+    {
+        "task": "Python Course Assignment",
+        "deadline": "2025-12-10",
+        "hours_needed": 4
+    },
+    {
+        "task": "Finnish Language Homework",
+        "deadline": "2025-12-08",
+        "hours_needed": 2
+    },
+    {
+        "task": "dhana",
+        "deadline": "2025-12-10",
+        "hours_needed": 2
+    },
+    {
+        "task": "dhana",
+        "deadline": "2025-02-03",
+        "hours_needed": 1
+    },
+    {
+        "task": "arun",
+        "deadline": "12025-08-12",
+        "hours_needed": 3
+    }
+]
